@@ -3,8 +3,9 @@
 namespace App\SourceBundle\Base;
 
 use App\SourceBundle\Helpers\Arr;
+use App\SourceBundle\Interfaces\Handler;
 
-abstract class TaskManager {
+abstract class HandlerManager implements Handler {
 
 	/**
 	 * Inject dependencies into class properties
@@ -35,19 +36,19 @@ abstract class TaskManager {
 		return $errorArr;
 	}
 
-	public function setFilters($filters)
+	public function setFilters(array $filters)
 	{
 		$this->filters = $filters;
 		return $this;
 	}
 
-	public function setSettings($settings)
+	public function setSettings(array $settings)
 	{
 		$this->settings = $settings;
 		return $this;
 	}
 
-	public function setPaging($paging)
+	public function setPaging(array $paging)
 	{
 		$this->paging = $paging;
 		return $this;

@@ -9,7 +9,7 @@ use Symfony\Component\Config\Definition\Exception\Exception;
 
 class Controller extends FrameworkBundle\Controller\Controller {
 
-	public function getTask($entity, $task, $bundle = FALSE)
+	public function getHandler($entity, $handler, $bundle = FALSE)
 	{
 		// If bundle wasn't provided, trying to extract the name by the called controller
 		if ( ! $bundle)
@@ -21,8 +21,8 @@ class Controller extends FrameworkBundle\Controller\Controller {
 			$bundle = Arr::get($match, 'BUNDLE');
 		}
 
-		$gateway = $this->container->get('task_gateway');
+		$gateway = $this->container->get('handler_gateway');
 
-		return $gateway->getTask($entity, $task, $bundle);
+		return $gateway->getHandler($entity, $handler, $bundle);
 	}
 }
