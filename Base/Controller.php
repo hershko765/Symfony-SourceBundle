@@ -6,8 +6,9 @@ use Symfony\Bundle\FrameworkBundle;
 use App\SourceBundle\Base;
 use App\SourceBundle\Helpers\Arr;
 use Symfony\Component\Config\Definition\Exception\Exception;
+use FOS\RestBundle\Controller\FOSRestController;
 
-class Controller extends FrameworkBundle\Controller\Controller {
+class Controller extends FOSRestController {
 
 	public function getHandler($entity, $handler, $bundle = FALSE)
 	{
