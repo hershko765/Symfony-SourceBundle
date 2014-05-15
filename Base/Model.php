@@ -1,8 +1,19 @@
 <?php
 
 namespace App\SourceBundle\Base;
-
 use App\SourceBundle\Helpers\Arr;
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\PrePersist;
+use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
+use DateTime;
+
+/**
+ * Class Model
+ *
+ * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
+ * @package App\SourceBundle\Base
+ */
 abstract class Model {
 
 	/**
@@ -14,9 +25,10 @@ abstract class Model {
 	{
 		foreach($data as $col => $val)
 		{
-			if(method_exists($this, 'set'.ucwords($col)))
+			$method = 'set'.str_replace(' ', '', ucwords(str_replace('_', ' ', $col)));
+			if(method_exists($this, $method))
 			{
-				$this->{'set'.ucwords($col)}($val);
+				$this->{$method}($val);
 			}
 		}
 	}
