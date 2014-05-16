@@ -39,12 +39,3 @@ class FlushCommand extends ContainerAwareCommand
 		}
 	}
 }
-
-// JSON files contain all categories
-// Loop trough all categories for each addon do the following:
-
-# Check if the addon exists
-	# If exists check if its updated
-		# Updated addon
-		# Ignore and continue
-	# If not exists create new record in addons and add it
